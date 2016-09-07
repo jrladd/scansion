@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 import pronouncing as pr
 import sys
@@ -20,7 +20,12 @@ def find_stress(line):
 
 l = "Shall I compare thee to a summer's day?"
 
+def name_meter(stress):
+    stressed_syllables = [i for i,s in enumerate(stress) if s == '1']
+    return stressed_syllables
+
 with open(f, 'r') as file:
     text = file.readlines()
     for line in text:
-        print find_stress(line)
+        print(find_stress(line))
+        print(name_meter(find_stress(line)))
